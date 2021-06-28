@@ -25,6 +25,7 @@ class Author(models.Model):
         :return: author id, author name, author surname, author patronymic
         """
         return str(self.to_dict())[1:-1]
+        # return f"{self.name} {self.surname}"
 
     def __repr__(self):
         """

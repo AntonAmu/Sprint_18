@@ -1,0 +1,20 @@
+{%extends 'book\\base.html'%}
+{% block main %}
+<div class ='form-group col-md-2'>
+<form action="{%url 'book:create_book'%}", method = "post">
+    {% csrf_token %}
+    {% for field in form %}
+        <div сlass = 'form-group mb-2'>
+            {{field.label}}
+            {{field}}
+        </div>
+    {% endfor %}
+    {% if form.errors %}
+        <div class = 'alert alert-danger'>{{form.non_field_errors}}{{form.errors}}</div>
+    {% endif %}
+    <button type="submit" class = 'btn btn-primary'>Create</button>
+</form>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{%extends 'book\\base.html'%}
+{%block main%}
+<h3>
+	{%if list_of_books%}
+		{%for book in list_of_books%}
+			<ul>
+				<div class ='form-group col-md-6'>
+					<li>{{book}}
+						<a href = {% url "book:delete_book" book.pk%} class = 'btn btn-primary'>Delete</a>
+						<a href = {% url "book:update_book" book.pk%} class = 'btn btn-primary'>Update</a>
+					</li>
+				</div>
+			</ul>
+		{%endfor%}
+	{%else%}There is nothing
+	{%endif%}
+</h3>
+<h5><a href = {% url "book:create_book" %}>Create book</a></h5>
+
+{%endblock%}
