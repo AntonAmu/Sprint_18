@@ -19,8 +19,7 @@ from .views import *
 app_name = 'authentication'
 
 urlpatterns = [
-    path('', all_users, name = 'all_users'),
-    path('create/', CreateUser.as_view(), name = 'create_user'),
-    path('delete/<int:id>', delete, name = 'delete_user'),
-    path('update/<int:id>', UpdateUser.as_view(), name = 'update_user')
+    path('', AllCustomUserView.as_view(), name = 'all_users'),
+    path('create/', CreateCustomUserView.as_view(), name = 'create_users'),
+    path('<int:pk>/', DetailCustomUserView.as_view()),
 ]

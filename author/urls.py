@@ -19,8 +19,7 @@ from .views import *
 app_name = 'author'
 
 urlpatterns = [
-    path('', all_authors, name = 'all_authors'),
-    path('create/', CreateAuthor.as_view(), name = 'create_author'),
-    path('delete/<int:id>', delete, name = 'delete_author'),
-    path('update/<int:id>', UpdateAuthor.as_view(), name = 'update_author')
+    path('', AllAuthorView.as_view(), name = 'all_authors'),
+    path('create/', CreateAuthorView.as_view(), name = 'create_author'),
+    path('detail/<int:pk>', DetailCustomUserView.as_view(), name = 'update_author')
 ]
