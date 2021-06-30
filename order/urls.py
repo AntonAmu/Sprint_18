@@ -18,9 +18,15 @@ from .views import *
 
 app_name = 'order'
 
+# urlpatterns = [
+#     path('', all_orders, name = 'all_orders'),
+#     path('create/', CreateOrder.as_view(), name = 'create_order'),
+#     path('delete/<int:id>', delete, name = 'delete_order'),
+#     path('update/<int:id>', UpdateOrder.as_view(), name = 'update_order')
+# ]
+
 urlpatterns = [
-    path('', all_orders, name = 'all_orders'),
-    path('create/', CreateOrder.as_view(), name = 'create_order'),
-    path('delete/<int:id>', delete, name = 'delete_order'),
-    path('update/<int:id>', UpdateOrder.as_view(), name = 'update_order')
+    path('', AllOrdersAPI.as_view(), name = 'all_books'),
+    path('create/', CreateOderAPI.as_view(), name = 'create_users'),
+    path('detail/<int:pk>/', DetailOrderAPIView.as_view()),
 ]

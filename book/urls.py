@@ -18,9 +18,16 @@ from .views import *
 
 app_name = 'book'
 
+# urlpatterns = [
+#     path('', all_books, name = 'all_books'),
+#     path('create/', CreateBook.as_view(), name = 'create_book'),
+#     path('delete/<int:id>', delete, name = 'delete_book'),
+#     path('update/<int:id>', UpdateBook.as_view(), name = 'update_book'),
+#     path('api/v1/', AllBooks)
+# ]
+
 urlpatterns = [
-    path('', all_books, name = 'all_books'),
-    path('create/', CreateBook.as_view(), name = 'create_book'),
-    path('delete/<int:id>', delete, name = 'delete_book'),
-    path('update/<int:id>', UpdateBook.as_view(), name = 'update_book')
+    path('', AllBooks.as_view(), name = 'all_books'),
+    path('create/', CreateBookAPI.as_view(), name = 'create_users'),
+    path('detail/<int:pk>/', DetailBookAPIView.as_view()),
 ]

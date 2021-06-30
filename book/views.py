@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from .models import Book
 from django.views.generic import View
 from .forms import BookForm, UpdateBookForm
+from rest_framework import generics
+from .serializers import AllBooksSerializer, DetailBookSerializer
 
 
 def all_books(request):
@@ -42,3 +44,14 @@ class UpdateBook(View):
             return redirect('book:all_books')
         print('-' * 90)
         return render(request, 'book\\update_book_form.html', {'form': bound_form})
+
+class AllBooks(generics.ListAPIView):
+    serializer_class = DetailBookSerializer
+    queryset = Book.get_all()
+
+class CreateBookAPI(generics.CreateAPIView):
+    serializer_class = DetailBookSerializer
+
+class DetailBookAPIView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = DetailBookSerializer
+    queryset = Book.objects.all()

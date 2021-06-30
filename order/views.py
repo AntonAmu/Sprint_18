@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect
+from rest_framework import generics
+
 from .models import Order
 from django.views.generic import View
 from .forms import OrderForm, UpdateOrderForm
+from .serializer import *
 
 def all_orders(request):
     list_of_orders = Order.get_all()
@@ -38,3 +41,15 @@ class UpdateOrder(View):
             return redirect('order:all_orders')
         print('-'*90)
         return render(request, 'order\\update_order_form.html', {'form': bound_form})
+
+
+class AllOrdersAPI(generics.ListAPIView):
+    serializer_class = AllOrderSerializer
+    queryset = Order.get_all()
+
+class CreateOderAPI(generics.CreateAPIView):
+    serializer_class = DetailOrderSerializer
+
+class DetailOrderAPIView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = DetailOrderSerializer
+    queryset = Order.objects.all()
