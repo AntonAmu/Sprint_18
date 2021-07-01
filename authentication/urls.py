@@ -22,4 +22,5 @@ urlpatterns = [
     path('', AllCustomUserView.as_view(), name = 'all_users'),
     path('create/', CreateCustomUserView.as_view(), name = 'create_users'),
     path('<int:pk>/', DetailCustomUserView.as_view()),
+    path('<int:pk>/order',OrdersCustomUserView.as_view()),
 ]

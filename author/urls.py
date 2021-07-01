@@ -21,5 +21,5 @@ app_name = 'author'
 urlpatterns = [
     path('', AllAuthorView.as_view(), name = 'all_authors'),
     path('create/', CreateAuthorView.as_view(), name = 'create_author'),
-    path('detail/<int:pk>', DetailCustomUserView.as_view(), name = 'update_author')
+    path('detail/<int:pk>/', DetailAuthorView.as_view(), name = 'update_author')
 ]

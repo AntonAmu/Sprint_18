@@ -13,6 +13,6 @@ class AllAuthorView(generics.ListAPIView):
     serializer_class = DetailAuthorSerializer
     queryset = Author.get_all()
 
-class DetailCustomUserView(generics.RetrieveUpdateDestroyAPIView):
+class DetailAuthorView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = DetailAuthorSerializer
     queryset = Author.get_all()
